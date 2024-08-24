@@ -1,0 +1,31 @@
+Purchase Order #002
+ABC Pharmaceuticals
+123 Pharma Lane
+New York, NY 10001
+Date: August 10, 2024
+
+Supplier:
+IT Solutions Inc.
+123 Tech Avenue
+San Francisco, CA 94105
+
+Purchase Order (PO) Number: 002
+Payment Terms: Net 30 days
+Delivery Date: August 24, 2024
+
+Description:
+This purchase order is for the acquisition of an enterprise database management software license. This software is required for the secure and efficient management of large-scale clinical trial data, ensuring compliance with FDA regulations and data integrity standards.
+
+Item #	Commodity Code	Description	Quantity	Unit Price	Total Price
+1	202030	Database Management Software	1	$25,000.00	$25,000.00
+Subtotal: $25,000.00
+Tax (8%): $2,000.00
+Shipping: N/A
+Total: $27,000.00
+
+Special Instructions:
+Please provide installation support and training sessions for our IT staff to ensure seamless integration with our existing systems.
+
+Authorized By: Jane Smith
+Signature: _________________________
+Date: August 10, 2024

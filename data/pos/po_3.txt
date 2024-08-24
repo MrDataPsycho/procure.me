@@ -1,0 +1,31 @@
+Purchase Order #003
+ABC Pharmaceuticals
+123 Pharma Lane
+New York, NY 10001
+Date: August 10, 2024
+
+Supplier:
+Quality Packaging Solutions
+789 Package Road
+Chicago, IL 60610
+
+Purchase Order (PO) Number: 003
+Payment Terms: Net 30 days
+Delivery Date: August 24, 2024
+
+Description:
+This purchase order covers the procurement of primary packaging materials, including vials and syringes, necessary for the packaging of our newly approved pharmaceutical product. These materials must meet GMP (Good Manufacturing Practice) standards and be compatible with our automated filling lines.
+
+Item #	Commodity Code	Description	Quantity	Unit Price	Total Price
+1	401010	Primary Packaging	100,000	$0.75	$75,000.00
+Subtotal: $75,000.00
+Tax (8%): $6,000.00
+Shipping: $500.00
+Total: $81,500.00
+
+Special Instructions:
+Please ensure all packaging materials are delivered in sterile conditions and are accompanied by a certificate of analysis.
+
+Authorized By: Michael Johnson
+Signature: _________________________
+Date: August 10, 2024

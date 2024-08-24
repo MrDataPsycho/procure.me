@@ -1,0 +1,31 @@
+Purchase Order #001
+ABC Pharmaceuticals
+123 Pharma Lane
+New York, NY 10001
+Date: August 10, 2024
+
+Supplier:
+XYZ Lab Equipment Co.
+456 Lab Street
+Boston, MA 02118
+
+Purchase Order (PO) Number: 001
+Payment Terms: Net 30 days
+Delivery Date: August 24, 2024
+
+Description:
+This purchase order is for the procurement of high-performance analytical balances needed for precise measurement tasks in our pharmaceutical research laboratories. These balances are crucial for ensuring the accuracy of chemical and biological assays conducted in our R&D department.
+
+Item #	Commodity Code	Description	Quantity	Unit Price	Total Price
+1	701010	Analytical Balances	10	$1,500.00	$15,000.00
+Subtotal: $15,000.00
+Tax (8%): $1,200.00
+Shipping: $250.00
+Total: $16,450.00
+
+Special Instructions:
+Please ensure that the balances are calibrated prior to shipment and include all necessary accessories for immediate deployment.
+
+Authorized By: Dr. John Doe
+Signature: _________________________
+Date: August 10, 2024

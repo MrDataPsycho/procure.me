@@ -1,0 +1,91 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "smart-procurement"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "MrDataPsycho", email = "mr.data.psycho@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "chromadb-client==0.5.6.dev0",
+  "openai==1.40.6",
+  "quart",
+  "sentence_transformers",
+  "sqlmodel==0.0.21",
+  "psycopg2-binary"
+]
+
+[project.optional-dependencies]
+testing = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock"
+]
+
+dev = [
+  "ruff",
+  "mypy",
+  "typer",
+  "python-dotenv",
+  "pandas"
+]
+
+[project.urls]
+Documentation = "https://github.com/MrDataPsycho/smart-procurement#readme"
+Issues = "https://github.com/MrDataPsycho/smart-procurement/issues"
+Source = "https://github.com/MrDataPsycho/smart-procurement"
+
+[tool.hatch.version]
+path = "src/smart_procurement/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0"
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/smart_procurement tests}"
+
+[tool.coverage.run]
+source_pkgs = ["smart_procurement", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/smart_procurement/__about__.py",
+]
+
+[tool.coverage.paths]
+smart_procurement = ["src/smart_procurement", "*/smart-procurement/src/smart_procurement"]
+tests = ["tests", "*/smart-procurement/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs"
+]
+[tool.hatch.envs.docs.scripts]
+build = "mkdocs build --clean --strict"
+serve = "mkdocs serve --dev-addr localhost:8000"

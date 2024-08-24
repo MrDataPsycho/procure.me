@@ -1,0 +1,67 @@
+l1|l1_desc|l2|l2_desc|l3|l3_desc
+10|Office Equipment|1010|Files and Stationery|101010|Pencil, Files, Envelopes for office equipment
+10|Office Equipment|1010|Files and Stationery|101020|Notebooks, Diaries, and Journals for office use
+10|Office Equipment|1010|Files and Stationery|101030|Binders and Folders for document storage
+10|Office Equipment|1020|Printers and Scanners|102010|Laser Printers for office printing
+10|Office Equipment|1020|Printers and Scanners|102020|Inkjet Printers for high-quality printing
+10|Office Equipment|1020|Printers and Scanners|102030|Multi-function Scanners for document digitization
+10|Office Equipment|1030|Office Furniture|103010|Ergonomic Chairs for employee comfort
+10|Office Equipment|1030|Office Furniture|103020|Height-Adjustable Desks for office setup
+10|Office Equipment|1030|Office Furniture|103030|Modular Workstations for flexible office layouts
+10|Office Equipment|1040|Communication Devices|104010|Conference Phones for group communication
+10|Office Equipment|1040|Communication Devices|104020|Video Conferencing Systems for virtual meetings
+10|Office Equipment|1040|Communication Devices|104030|Two-way Radios for internal communication
+20|IT Goods and Services|2010|Computers and Peripherals|201010|Desktop Computers for office workstations
+20|IT Goods and Services|2010|Computers and Peripherals|201020|Laptops for mobile workstations
+20|IT Goods and Services|2010|Computers and Peripherals|201030|Monitors and Display Screens for computing
+20|IT Goods and Services|2020|Networking Equipment|202010|Routers and Switches for network management
+20|IT Goods and Services|2020|Networking Equipment|202020|Network Cables and Connectors for data transmission
+20|IT Goods and Services|2020|Networking Equipment|202030|Wireless Access Points for Wi-Fi connectivity
+20|IT Goods and Services|2030|Software Licenses|203010|Antivirus Software for cybersecurity
+20|IT Goods and Services|2030|Software Licenses|203020|Project Management Software for team collaboration
+20|IT Goods and Services|2030|Software Licenses|203030|Data Analysis Software for research and development
+20|IT Goods and Services|2040|Cloud Services|204010|Cloud Storage Solutions for data backup
+20|IT Goods and Services|2040|Cloud Services|204020|Cloud Computing Platforms for scalable IT resources
+20|IT Goods and Services|2040|Cloud Services|204030|Cloud-based Collaboration Tools for remote teams
+30|Supply Chain|3010|Logistics and Transportation|301010|Freight and Shipping Services for goods delivery
+30|Supply Chain|3010|Logistics and Transportation|301020|Courier Services for document and package delivery
+30|Supply Chain|3010|Logistics and Transportation|301030|Fleet Management Services for vehicle tracking
+30|Supply Chain|3020|Inventory Management|302010|Warehouse Management Systems for stock control
+30|Supply Chain|3020|Inventory Management|302020|Automated Inventory Counting Systems for accuracy
+30|Supply Chain|3020|Inventory Management|302030|Barcode Scanners for inventory tracking
+30|Supply Chain|3030|Procurement Services|303010|Supplier Relationship Management Software for procurement efficiency
+30|Supply Chain|3030|Procurement Services|303020|E-Procurement Platforms for online purchasing
+30|Supply Chain|3030|Procurement Services|303030|Spend Analysis Tools for cost optimization
+40|Quality and Manufacturing|4010|Manufacturing Equipment|401010|Pharmaceutical Production Equipment for drug manufacturing
+40|Quality and Manufacturing|4010|Manufacturing Equipment|401020|Sterilization Equipment for cleanroom environments
+40|Quality and Manufacturing|4010|Manufacturing Equipment|401030|Packaging Machines for pharmaceutical products
+40|Quality and Manufacturing|4020|Quality Control Instruments|402010|High-Performance Liquid Chromatography (HPLC) Systems for drug testing
+40|Quality and Manufacturing|4020|Quality Control Instruments|402020|Spectrophotometers for analytical testing
+40|Quality and Manufacturing|4020|Quality Control Instruments|402030|Microscopes for laboratory analysis
+40|Quality and Manufacturing|4030|Safety Equipment|403010|Personal Protective Equipment (PPE) for manufacturing staff
+40|Quality and Manufacturing|4030|Safety Equipment|403020|Fire Safety Equipment for manufacturing plants
+40|Quality and Manufacturing|4030|Safety Equipment|403030|Chemical Spill Kits for emergency response
+50|Research and Development|5010|Laboratory Equipment|501010|Analytical Balances for precise measurements in research
+50|Research and Development|5010|Laboratory Equipment|501020|Centrifuges for sample preparation in labs
+50|Research and Development|5010|Laboratory Equipment|501030|PCR Machines for DNA amplification
+50|Research and Development|5020|Lab Consumables|502010|Pipettes and Tips for liquid handling
+50|Research and Development|5020|Lab Consumables|502020|Test Tubes and Vials for sample storage
+50|Research and Development|5020|Lab Consumables|502030|Petri Dishes for microbial cultures
+50|Research and Development|5030|Scientific Software|503010|Molecular Modeling Software for drug design
+50|Research and Development|5030|Scientific Software|503020|Data Analysis Software for clinical trials
+50|Research and Development|5030|Scientific Software|503030|Laboratory Information Management Systems (LIMS) for data management
+60|Human Resources|6010|Training and Development|601010|E-Learning Platforms for employee training
+60|Human Resources|6010|Training and Development|601020|Leadership Development Programs for managerial staff
+60|Human Resources|6010|Training and Development|601030|Technical Skill Development Workshops for employees
+60|Human Resources|6020|Recruitment Services|602010|Talent Acquisition Platforms for candidate sourcing
+60|Human Resources|6020|Recruitment Services|602020|Background Check Services for employee screening
+60|Human Resources|6020|Recruitment Services|602030|Temporary Staffing Services for short-term hiring
+70|Facilities Management|7010|Building Maintenance|701010|HVAC Systems for building climate control
+70|Facilities Management|7010|Building Maintenance|701020|Plumbing Services for facility upkeep
+70|Facilities Management|7010|Building Maintenance|701030|Electrical Maintenance Services for power systems
+70|Facilities Management|7020|Security Services|702010|Security Surveillance Systems for building monitoring
+70|Facilities Management|7020|Security Services|702020|Access Control Systems for secure entry management
+70|Facilities Management|7020|Security Services|702030|On-site Security Personnel for facility protection
+70|Facilities Management|7030|Cleaning and Janitorial Services|703010|Office Cleaning Services for regular maintenance
+70|Facilities Management|7030|Cleaning and Janitorial Services|703020|Specialized Cleanroom Cleaning for contamination control
+70|Facilities Management|7030|Cleaning and Janitorial Services|703030|Waste Management Services for disposal of hazardous materials

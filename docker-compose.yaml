@@ -1,0 +1,38 @@
+networks:
+  net:
+    driver: bridge
+services:
+  vectordb:
+    image: chromadb/chroma:latest
+    volumes:
+      - ./chromadb:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+      - ANONYMIZED_TELEMETRY=FALSE
+    ports:
+      - 8010:8000
+    networks:
+      - net
+  cachingdb:
+      image: chromadb/chroma:latest
+      environment:
+        - IS_PERSISTENT=FALSE
+        - ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY:-FALSE}
+      ports:
+        - 8011:8000
+      networks:
+        - net
+  postgres_db:
+      image: postgres:latest
+      container_name: postgres_db
+      environment:
+        POSTGRES_USER: postgres  # Default username
+        POSTGRES_PASSWORD: postgres  # Default password
+        POSTGRES_DB: postgres  # Default database name
+      volumes:
+        - ./data/postgres_data:/var/lpostgresib/postgresql/data  # Persist data
+      ports:
+        - 5432:5432  # Expose Postgres port
+      networks:
+        - net
