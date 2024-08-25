@@ -30,7 +30,8 @@ dependencies = [
   "quart",
   "sentence_transformers",
   "sqlmodel==0.0.21",
-  "psycopg2-binary"
+  "psycopg2-binary",
+  "sentence-transformers"
 ]
 
 [project.optional-dependencies]
@@ -45,7 +46,8 @@ dev = [
   "mypy",
   "typer",
   "python-dotenv",
-  "pandas"
+  "pandas",
+  "polars"
 ]
 
 [project.urls]

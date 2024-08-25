@@ -1,6 +1,5 @@
 import typer
 from sqlalchemy import create_engine, Table, MetaData, Column, Integer, String
-from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.exc import SQLAlchemyError
 from dotenv import load_dotenv
 from smart_procurement.configurations.db_connection_config import DbConnectionModel
@@ -77,12 +76,13 @@ def drop_table():
     except SQLAlchemyError as e:
         typer.echo(f"Error dropping table: {e}")
 
+
 if __name__ == "__main__":
     """Examples:
 
-    $ python src/clis/manage-table.py create-table
-    $ python src/clis/manage-table.py insert-data --csv-file data.csv
-    $ python src/clis/manage-table.py delete-data
-    $ python src/clis/manage-table.py drop-table
+    $ python src/clis/manage_table.py create-table
+    $ python src/clis/manage_table.py insert-data data/raw/commodity_codes.csv
+    $ python src/clis/manage_table.py delete-data
+    $ python src/clis/manage_table.py drop-table
     """
     app()
