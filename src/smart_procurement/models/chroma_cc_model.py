@@ -28,7 +28,7 @@ class CommodityCodes(BaseModel):
         )
 
 
-class CommodityCodesListChromaDB:
+class CommodityCodesListChromaDB(BaseModel):
     codes: List[CommodityCodes]
 
     def get_chroma_input_document(self):
@@ -40,4 +40,4 @@ class CommodityCodesListChromaDB:
 
     @classmethod
     def from_dict(cls, data: List[dict]):
-        return cls(list(map(lambda d: CommodityCodes.from_dict(d), data)))
+        return cls(codes=[CommodityCodes.from_dict(item) for item in data])
