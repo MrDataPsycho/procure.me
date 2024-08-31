@@ -5,6 +5,7 @@ from smart_procurement.models.cc_codes_model import CommodityCodes
 import os
 from sqlmodel import create_engine, select, Session
 from smart_procurement.embeeders import MixedbreadEmbedder
+from smart_procurement.embeeding_funcs import MixedbreadEmbeddingFunction
 from smart_procurement.interfaces.retriver_interface import (
     query_vector_db,
     QueryResultList,
@@ -27,7 +28,7 @@ db_connection = DbConnectionModel(**os.environ)
 engine = create_engine(db_connection.get_connecton_str_with_psycopg2())
 EMB_MODEL_PATH = "models/embeddings/mxbai-embed-large-v1"
 EMBEDDER = MixedbreadEmbedder(EMB_MODEL_PATH)
-
+EMB_FUNC = MixedbreadEmbeddingFunction(embedder=EMBEDDER)
 VECTOR_COLLECTION_NAME = "commodity_codes"
 
 
@@ -53,7 +54,7 @@ async def search():
     # if result:
     #     return {"original": search_input, "result": result}
 
-    response: QueryResultList = await query_vector_db(search_input, embeeder=EMBEDDER)
+    response: QueryResultList = await query_vector_db(search_input, embeeder=EMB_FUNC)
     ids = response.ids
     logger.info(f"Id matched {ids}")
     if ids:
