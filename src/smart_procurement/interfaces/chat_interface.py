@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 logger.info("Loading LLM...")
 
+
 class ModelSelection(StrEnum):
     """Enum for selecting the available LLM models."""
 

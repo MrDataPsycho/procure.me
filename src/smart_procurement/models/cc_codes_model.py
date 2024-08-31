@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, Field
 from smart_procurement.configurations.db_connection_config import DbConnectionModel
+from pydantic import BaseModel
 
 
 class CommodityCodes(SQLModel, table=True):
@@ -10,6 +11,10 @@ class CommodityCodes(SQLModel, table=True):
     l2_desc: str
     l3: int = Field(default=None, primary_key=True)
     l3_desc: str
+
+
+class CommodityCodesList(BaseModel):
+    codes: list[CommodityCodes]
 
 
 if __name__ == "__main__":
@@ -27,4 +32,5 @@ if __name__ == "__main__":
     with Session(engine) as session:
         commodity_codes = select(CommodityCodes)
         commodity_codes = session.exec(commodity_codes).all()
-        print(commodity_codes)
+        code_list = CommodityCodesList(codes=commodity_codes)
+        print(code_list)
