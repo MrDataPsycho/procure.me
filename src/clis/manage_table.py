@@ -6,7 +6,6 @@ from smart_procurement.configurations.db_connection_config import DbConnectionMo
 import os
 import pandas as pd
 
-     
 
 app = typer.Typer()
 load_dotenv(".envs/dev.env", override=True)
@@ -23,15 +22,17 @@ metadata = MetaData()
 def _create_table():
     """Creates the table based on the CSV schema."""
     table = Table(
-        'commodity_codes', metadata,
-        Column('l1', Integer),
-        Column('l1_desc', String),
-        Column('l2', Integer),
-        Column('l2_desc', String),
-        Column('l3', Integer, primary_key=True),
-        Column('l3_desc', String)
+        "commodity_codes",
+        metadata,
+        Column("l1", Integer),
+        Column("l1_desc", String),
+        Column("l2", Integer),
+        Column("l2_desc", String),
+        Column("l3", Integer, primary_key=True),
+        Column("l3_desc", String),
     )
     metadata.create_all(engine)
+
 
 @app.command()
 def create_table():
@@ -42,12 +43,13 @@ def create_table():
     except SQLAlchemyError as e:
         typer.echo(f"Error creating table: {e}")
 
+
 @app.command()
 def insert_data(csv_file: str):
     """Insert data from a CSV file into the PostgreSQL table."""
     try:
-        df = pd.read_csv(csv_file, sep='|')
-        df.to_sql('commodity_codes', engine, if_exists='append', index=False)
+        df = pd.read_csv(csv_file, sep="|")
+        df.to_sql("commodity_codes", engine, if_exists="append", index=False)
         typer.echo("Data inserted successfully.")
     except SQLAlchemyError as e:
         typer.echo(f"Error inserting data: {e}")
@@ -55,6 +57,7 @@ def insert_data(csv_file: str):
         typer.echo("CSV file not found.")
     except pd.errors.ParserError:
         typer.echo("Error parsing CSV file.")
+
 
 @app.command()
 def delete_data():
@@ -66,11 +69,12 @@ def delete_data():
     except SQLAlchemyError as e:
         typer.echo(f"Error deleting data: {e}")
 
+
 @app.command()
 def drop_table():
     """Drop the PostgreSQL table and delete all its data."""
     try:
-        table = Table('commodity_codes', metadata, autoload_with=engine)
+        table = Table("commodity_codes", metadata, autoload_with=engine)
         table.drop(engine)
         typer.echo("Table dropped successfully.")
     except SQLAlchemyError as e:

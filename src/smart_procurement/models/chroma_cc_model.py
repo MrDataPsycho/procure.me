@@ -12,19 +12,19 @@ class CommodityCodes(BaseModel):
 
     def get_metadata_as_dict(self):
         data = self.model_dump()
-        data.pop('l3_desc', None)
-        data.pop('l3', None)
+        data.pop("l3_desc", None)
+        data.pop("l3", None)
         return data
 
     @classmethod
     def from_dict(cls, data: dict):
         return cls(
-            l1=data.get('l1'),
-            l1_desc=data.get('l1_desc'),
-            l2=data.get('l2'),
-            l2_desc=data.get('l2_desc'),
-            l3=data.get('l3'),
-            l3_desc=data.get('l3_desc')
+            l1=data.get("l1"),
+            l1_desc=data.get("l1_desc"),
+            l2=data.get("l2"),
+            l2_desc=data.get("l2_desc"),
+            l3=data.get("l3"),
+            l3_desc=data.get("l3_desc"),
         )
 
 

@@ -31,7 +31,9 @@ dependencies = [
   "sentence_transformers",
   "sqlmodel==0.0.21",
   "psycopg2-binary",
-  "sentence-transformers"
+  "sentence-transformers",
+  "llama-index-llms-ollama",
+  "neopipe"
 ]
 
 [project.optional-dependencies]
@@ -47,7 +49,8 @@ dev = [
   "typer",
   "python-dotenv",
   "pandas",
-  "polars"
+  "polars",
+  "nbconvert"
 ]
 
 [project.urls]

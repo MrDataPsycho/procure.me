@@ -6,6 +6,7 @@ from rich.table import Table
 API_URL = "http://127.0.0.1:5000/api/v1/search"
 console = Console()
 
+
 def search(term: str):
     """
     Search for a term in the ChromaDB vector database.
@@ -18,11 +19,15 @@ def search(term: str):
     try:
         response = httpx.post(API_URL, json={"search_input": term})
     except httpx.RequestError as exc:
-        console.print(f"[bold red]An error occurred while requesting {exc.request.url!r}.[/bold red]")
+        console.print(
+            f"[bold red]An error occurred while requesting {exc.request.url!r}.[/bold red]"
+        )
         return
 
     if response.status_code != 200:
-        console.print(f"[bold red]Failed to fetch results: {response.status_code}[/bold red]")
+        console.print(
+            f"[bold red]Failed to fetch results: {response.status_code}[/bold red]"
+        )
         return
 
     # Parsing the response
@@ -55,7 +60,10 @@ def search(term: str):
     console.print(table)
 
     elapsed_time = time.time() - start_time
-    console.print(f"[bold green]Search completed in {elapsed_time:.2f} seconds.[/bold green]")
+    console.print(
+        f"[bold green]Search completed in {elapsed_time:.2f} seconds.[/bold green]"
+    )
+
 
 def main():
     while True:
@@ -63,8 +71,11 @@ def main():
             search_term = input("\nEnter your search term (or Ctrl+C to exit): ")
             search(search_term)
         except KeyboardInterrupt:
-            console.print("\n[bold yellow]Exiting the search application.[/bold yellow]")
+            console.print(
+                "\n[bold yellow]Exiting the search application.[/bold yellow]"
+            )
             break
+
 
 if __name__ == "__main__":
     main()

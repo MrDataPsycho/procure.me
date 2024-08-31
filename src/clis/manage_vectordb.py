@@ -26,13 +26,11 @@ async def create_collection():
     """Create a new collection in the ChromaDB server."""
     collection = await client.get_or_create_collection(
         "commodity_codes",
-        embedding_function=MixedbreadEmbeddingFunction(
-            embedder=emb_model
-        ),
+        embedding_function=MixedbreadEmbeddingFunction(embedder=emb_model),
         metadata={
             "hnsw:space": "cosine",
             "hnsw:construction_ef": 100,
-        }
+        },
     )
     typer.echo("Collection 'commodity_codes' created successfully.")
     await client.close()
@@ -50,18 +48,16 @@ def insert_documents(csv_file: str = typer.Argument(COMMODITY_CODE_FILE_PATH)):
     """Insert documents from a CSV file into the ChromaDB collection."""
     collection = client.get_or_create_collection(
         "commodity_codes",
-        embedding_function=MixedbreadEmbeddingFunction(
-            embedder=emb_model
-        ),
+        embedding_function=MixedbreadEmbeddingFunction(embedder=emb_model),
     )
-    
+
     # Load the data from the CSV file
     cc_df = pl.read_csv(csv_file, separator="|")
-    
+
     # Convert to the data structure expected by ChromaDB
     cc_list = CommodityCodesListChromaDB.from_dict(cc_df.to_dicts())
     cc_documents = cc_list.get_chroma_input_document()
-    
+
     # Add documents to the collection
     collection.add(**cc_documents)
     typer.echo("Documents inserted successfully.")

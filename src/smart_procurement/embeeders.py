@@ -4,6 +4,7 @@ from sentence_transformers import SentenceTransformer
 
 logger = logging.getLogger(__name__)
 
+
 class MixedbreadEmbedder:
     def __init__(
         self, model_name="mixedbread-ai/mxbai-embed-large-v1", truncate_dim=1024
