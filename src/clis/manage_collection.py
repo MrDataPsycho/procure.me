@@ -4,8 +4,8 @@ import asyncio
 import chromadb
 from dotenv import load_dotenv
 import os
-from smart_procurement.embeeders import MixedbreadEmbedder
-from smart_procurement.embeeding_funcs import MixedbreadEmbeddingFunction
+from procureme.embeeders import MixedbreadEmbedder
+from procureme.embeeding_funcs import MixedbreadEmbeddingFunction
 
 
 app = typer.Typer()

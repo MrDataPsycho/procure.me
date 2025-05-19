@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "smart-procurement"
+name = "procureme"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
@@ -25,15 +25,20 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-  "chromadb-client==0.5.6.dev0",
-  "openai==1.40.6",
-  "quart",
-  "sentence_transformers",
   "sqlmodel==0.0.21",
-  "psycopg2-binary",
-  "sentence-transformers",
-  "llama-index-llms-ollama",
-  "neopipe"
+  "psycopg2-binary==2.9.10",
+  "llama-index-llms-ollama==0.5.4",
+  "llama-index-embeddings-ollama==0.6.0",
+  "neopipe==0.1.1",
+  "ollama==0.4.8",
+  "pymupdf4llm==0.0.24",
+  "llama-index==0.12.36",
+  "lancedb==0.22.0",
+  "fastapi==0.115.12",
+  "uvicorn==0.34.2",
+  "pydantic==2.11.4",
+  "streamlit==1.45.1",
+  "watchdog==6.0.0",
 ]
 
 [project.optional-dependencies]
@@ -51,7 +56,8 @@ dev = [
   "pandas",
   "polars",
   "nbconvert",
-  "requests"
+  "requests",
+  "ipywidgets"
 ]
 
 [project.urls]
@@ -60,25 +66,25 @@ Issues = "https://github.com/MrDataPsycho/smart-procurement/issues"
 Source = "https://github.com/MrDataPsycho/smart-procurement"
 
 [tool.hatch.version]
-path = "src/smart_procurement/__about__.py"
+path = "src/procureme/__about__.py"
 
 [tool.hatch.envs.types]
 extra-dependencies = [
   "mypy>=1.0.0"
 ]
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/smart_procurement tests}"
+check = "mypy --install-types --non-interactive {args:src/procureme tests}"
 
 [tool.coverage.run]
-source_pkgs = ["smart_procurement", "tests"]
+source_pkgs = ["procureme", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/smart_procurement/__about__.py",
+  "src/procureme/__about__.py",
 ]
 
 [tool.coverage.paths]
-smart_procurement = ["src/smart_procurement", "*/smart-procurement/src/smart_procurement"]
+procureme = ["src/procureme", "*/smart-procurement/src/procureme"]
 tests = ["tests", "*/smart-procurement/tests"]
 
 [tool.coverage.report]

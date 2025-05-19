@@ -2,7 +2,7 @@ import typer
 from sqlalchemy import create_engine, Table, MetaData, Column, Integer, String
 from sqlalchemy.exc import SQLAlchemyError
 from dotenv import load_dotenv
-from smart_procurement.configurations.db_connection_config import DbConnectionModel
+from procureme.configurations.db_connection_config import DbConnectionModel
 import os
 import pandas as pd
 

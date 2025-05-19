@@ -4,10 +4,10 @@ import polars as pl
 import chromadb
 from typing import List
 from dataclasses import dataclass, asdict
-from smart_procurement.embeeders import MixedbreadEmbedder
-from smart_procurement.embeeding_funcs import MixedbreadEmbeddingFunction
+from procureme.embeeders import MixedbreadEmbedder
+from procureme.embeeding_funcs import MixedbreadEmbeddingFunction
 from pathlib import Path
-from smart_procurement.models.chroma_cc_model import CommodityCodesListChromaDB
+from procureme.models.chroma_cc_model import CommodityCodesListChromaDB
 
 app = typer.Typer()
 
