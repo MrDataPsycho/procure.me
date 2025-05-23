@@ -1,7 +1,7 @@
 from procureme.clients.embedder import EmbeddingClientABC
 from typing import Any, Dict, List, Optional
 from llama_index.embeddings.ollama import OllamaEmbedding
-
+import os
 
 class OllamaEmbeddingClient(EmbeddingClientABC):
     """Ollama implementation of the EmbeddingClientABC interface."""
@@ -9,7 +9,7 @@ class OllamaEmbeddingClient(EmbeddingClientABC):
     def __init__(
         self,
         model_name: str = "nomic-embed-text:v1.5",
-        base_url: str = "http://localhost:11434",
+        base_url: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
         additional_kwargs: Optional[Dict[str, Any]] = None,
         timeout: int = 60
     ):

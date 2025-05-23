@@ -1,10 +1,12 @@
 import streamlit as st
 import requests
+import os
 
 # API endpoint
-API_URL = "http://localhost:8000/chat"  # Adjust if hosted remotely
+API_URL_BASE = os.getenv("BACKEND_URL", "http://localhost:8000")
+API_URL_CHAT = os.path.join(API_URL_BASE, "chat")
 
-st.set_page_config(page_title="Procure.me Chat", layout="wide")
+st.set_page_config(page_title="Procure.Me", layout="wide")
 st.title("📄💬 Procure.me Contract Assistant")
 
 # Initialize chat history
@@ -27,7 +29,7 @@ if user_input:
 
     try:
         with st.spinner("Processing...", show_time=True):
-            response = requests.post(API_URL, json={"query": user_input})
+            response = requests.post(API_URL_CHAT, json={"query": user_input})
         response.raise_for_status()
         result = response.json()
 

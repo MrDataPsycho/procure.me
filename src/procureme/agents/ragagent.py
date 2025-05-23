@@ -3,7 +3,7 @@ FastAPI server for chat interactions with RAG capabilities using LanceDB and Oll
 """
 import logging
 import json
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any
 from pathlib import Path
 
 # Import Ollama from llama_index as requested

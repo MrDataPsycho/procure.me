@@ -7,6 +7,7 @@ from pathlib import Path
 from llama_index.llms.ollama import Ollama
 from procureme.agents.ragagent import RAGChatAgent
 import logging
+import os
 
 
 # Configure logging
@@ -38,14 +39,18 @@ class ChatResponse(BaseModel):
 
 # ----------- Load dependencies -----------
 # Initialize embedding client
-embed_client = OllamaEmbeddingClient()
+OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+
+logger.info(f"Ollama Base Url {OLLAMA_URL}")
+
+embed_client = OllamaEmbeddingClient(base_url=OLLAMA_URL)
 # Set DB path and table
 DBPATH = Path("vectordb").joinpath("contracts.db")
 VECTORDB_TABLE = "contracts_naive"
 # Initialize vector store
 VECTOR_STORE = LanceDBVectorStore(db_path=DBPATH, table_name=VECTORDB_TABLE, embedding_client=embed_client)
 # Initialize Ollama LLM client
-LLM_CLIENT = Ollama(model="gemma3:4b", request_timeout=120.0)
+LLM_CLIENT = Ollama(model="gemma3:4b", request_timeout=120.0, base_url=OLLAMA_URL)
 # Build agent
 AGENT = RAGChatAgent(llm_client=LLM_CLIENT, vector_store=VECTOR_STORE)
 
