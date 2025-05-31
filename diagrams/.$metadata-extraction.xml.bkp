@@ -158,33 +158,6 @@
         <mxCell id="s3JDpGNEvlZu_ZfnR47V-58" value="Local Lance DB" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=default;" parent="1" vertex="1">
           <mxGeometry x="556.25" y="290" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="yWIR4S4oP5LGRQFSd-4G-3" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="240" y="420" as="sourcePoint" />
-            <mxPoint x="240" y="40" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="yWIR4S4oP5LGRQFSd-4G-4" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="500" y="420" as="sourcePoint" />
-            <mxPoint x="500" y="40" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="yWIR4S4oP5LGRQFSd-4G-5" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="700" y="420" as="sourcePoint" />
-            <mxPoint x="700" y="40" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="yWIR4S4oP5LGRQFSd-4G-6" value="Silver" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="215" y="418" width="50" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="yWIR4S4oP5LGRQFSd-4G-7" value="Gold" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="475" y="418" width="50" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="yWIR4S4oP5LGRQFSd-4G-8" value="Platinum" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="671.25" y="420" width="70" height="30" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
