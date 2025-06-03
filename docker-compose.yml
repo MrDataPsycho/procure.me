@@ -10,8 +10,8 @@ services:
       - "host.docker.internal:172.17.0.1"
     environment:
       - OLLAMA_BASE_URL=http://172.17.0.1:11434
-    volumes:
-      - ./vectordb:/app/vectordb
+    # volumes:
+    #   - ./vectordb:/app/vectordb
     networks:
       - rag-net
 
@@ -29,6 +29,46 @@ services:
     networks:
       - rag-net
 
+  postgres:
+    image: postgres:15
+    container_name: rag-postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=procureme
+      - POSTGRES_USER=procureme
+      - POSTGRES_PASSWORD=procureme
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - rag-net
+
+  # qdrant:
+  #   image: qdrant/qdrant
+  #   container_name: rag-qdrant
+  #   restart: unless-stopped
+  #   ports:
+  #     - "6333:6333"  # REST API
+  #     - "6334:6334"  # gRPC API
+  #   networks:
+  #     - rag-net
+
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    container_name: rag-dynamodb
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data"
+    ports:
+      - "8001:8000"
+    volumes:
+      - dynamodb_data:/home/dynamodblocal/data
+    networks:
+      - rag-net
+
 networks:
   rag-net:
     driver: bridge
+
+volumes:
+  postgres_data:
+  dynamodb_data:

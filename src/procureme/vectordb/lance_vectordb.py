@@ -10,15 +10,17 @@ import json
 
 DEFAULT_DIMENSION = 768
 
-class DocumentWithMetadata(LanceModel):
-    """Lance DB model for document chunks with metadata."""
-    chunk_id: str
-    doc_id: str
-    file_name: str
-    total_pages: int
-    content: str
-    part: str
-    vector: Vector(DEFAULT_DIMENSION)  # The dimension will be set dynamically
+def get_schema_by_dimension(dimension: int) -> type[LanceModel]:
+    class DocumentWithMetadata(LanceModel):
+        """Lance DB model for document chunks with metadata."""
+        chunk_id: str
+        doc_id: str
+        file_name: str
+        total_pages: int
+        content: str
+        part: str
+        vector: Vector(dimension)
+    return DocumentWithMetadata
 
 
 class LanceDBVectorStore(VectorDBABC):
@@ -62,10 +64,11 @@ class LanceDBVectorStore(VectorDBABC):
         # Open existing table or create new one
         if self.table_name in self.db.table_names():
             self.table = self.db.open_table(self.table_name)
+        
         else:
             self.table = self.db.create_table(
                 self.table_name, 
-                schema=DocumentWithMetadata
+                schema=get_schema_by_dimension(self.dimension)
             )
     
     def save(self) -> None:
@@ -166,7 +169,7 @@ class LanceDBVectorStore(VectorDBABC):
                 .execute(lance_documents)
 
 
-    def _convert_doc_to_lance_format(self, doc: ParsedDocument) -> List[DocumentWithMetadata]:
+    def _convert_doc_to_lance_format(self, doc: ParsedDocument) -> List[LanceModel]:
         """
         Convert a ParsedDocument to LanceDB format.
         
@@ -180,8 +183,8 @@ class LanceDBVectorStore(VectorDBABC):
         for part in doc.parts:
             # Generate embedding for the text using the embedding client
             vector = self.embedding_client.get_embedding(part.text)
-            
-            document_unit = DocumentWithMetadata(
+            schema = get_schema_by_dimension(self.dimension)
+            document_unit = schema(
                 chunk_id=f"{doc.file_name}-{part.part}",
                 doc_id=doc.id_,
                 file_name=doc.file_name,

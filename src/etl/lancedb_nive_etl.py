@@ -9,6 +9,7 @@ from typing import Union, Dict, Any
 from procureme.models.contract_model import ParsedDocument
 from procureme.vectordb.lance_vectordb import LanceDBVectorStore
 from procureme.clients.ollama_embedder import OllamaEmbeddingClient
+from procureme.clients.openai_embedder import OpenAIEmbeddingClient
 
 
 # Configure logging
@@ -120,18 +121,28 @@ class DocumentETLPipeline:
 def main():
     """Example usage of the ETL pipeline."""
     import argparse
-    
+    from dotenv import load_dotenv
+
     parser = argparse.ArgumentParser(description="Load documents from JSON files into vector store")
     parser.add_argument("--db-path", type=str, required=True, help="Path to LanceDB database")
     parser.add_argument("--table-name", type=str, required=True, help="Name of the table")
     parser.add_argument("--data-dir", type=str, required=True, help="Directory containing JSON files")
+    parser.add_argument("--embed-client", type=str, required=True, help="Embedding client to use")
     parser.add_argument("--batch-size", type=int, default=100, help="Batch size for processing")
     parser.add_argument("--upsert", action="store_true", help="Upsert documents instead of insert")
     
+    
+    
     args = parser.parse_args()
+    load_dotenv(override=True)
     
     # Initialize embedding client
-    embedding_client = OllamaEmbeddingClient()
+    if args.embed_client == "openai":
+        embedding_client = OpenAIEmbeddingClient()
+    elif args.embed_client == "ollama":
+        embedding_client = OllamaEmbeddingClient()
+    else:
+        raise ValueError(f"Unknown embedding client: {args.embed_client}")
     
     # Initialize vector store
     vector_store = LanceDBVectorStore(

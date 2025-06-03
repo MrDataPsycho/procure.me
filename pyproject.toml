@@ -39,6 +39,8 @@ dependencies = [
   "pydantic==2.11.4",
   "streamlit==1.45.1",
   "watchdog==6.0.0",
+  "openai==1.82.1",
+  "doctomarkdown==0.1.7",
 ]
 
 [project.optional-dependencies]
@@ -57,7 +59,9 @@ dev = [
   "polars",
   "nbconvert",
   "requests",
-  "ipywidgets"
+  "ipywidgets",
+  "typer",
+  "tqdm",
 ]
 
 [project.urls]

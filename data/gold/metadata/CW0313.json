@@ -1,0 +1,22 @@
+{
+  "contract_title": "Procurement Contract",
+  "contract_type": "Purchase Contract",
+  "supplier_name": "STS",
+  "buyer_name": "Plasma Corporation",
+  "purchase_order": null,
+  "purchase_date": "2020-03-01",
+  "expiry_date": "2022-03-01",
+  "contract_description": null,
+  "objective": null,
+  "scope": [
+    "Bus",
+    "Car",
+    "Bike"
+  ],
+  "pricing_and_payment_terms": "The pricing for the products/services shall be as follows:  • Bus: $15 per unit  • Car: $25 per unit  • Bike: $35 per unit",
+  "delivery_terms": null,
+  "quality_assurance": null,
+  "confidentiality_clause": true,
+  "termination_clause": "Either party may terminate this Contract with 60 days written notice to the other party.",
+  "cwid": "CW0313"
+}

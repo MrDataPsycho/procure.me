@@ -4,9 +4,9 @@
 # In[74]:
 
 
-get_ipython().system(
-    "jupyter nbconvert ollama-with-openai.ipynb --to python --output ../src/smart_procurement/models/chat_interface.py"
-)
+# get_ipython().system(
+#     "jupyter nbconvert ollama-with-openai.ipynb --to python --output ../src/smart_procurement/models/chat_interface.py"
+# )
 
 
 # In[27]:
