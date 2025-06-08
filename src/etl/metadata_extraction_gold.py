@@ -29,10 +29,10 @@ class ExtractedContractMetadata(BaseModel):
     contract_type: str = Field(..., description="Type of contract, e.g., Purchase Contract, MSA, SOW")
     supplier_name: str = Field(..., description="Name of the supplier/vendor")
     buyer_name: str = Field(..., description="Name of the buyer organization")
-    purchase_order: Optional[str] = Field(None, description="Linked purchase order ID, if any")
-    purchase_date: Optional[date] = Field(None, description="Date the contract was signed or became effective in DD-MM-YYYY format")
-    expiry_date: Optional[date] = Field(None, description="Date the contract expires or ends in DD-MM-YYYY format")
-    contract_description: Optional[str] = Field(None, description="Short description or preamble of the contract")
+    purchase_order: Optional[str] = Field(None, description="Linked purchase order ID, order Number, if any or Contract Number")
+    purchase_date: date = Field(..., description="Date the contract was signed or became effective in DD-MM-YYYY format")
+    expiry_date: date = Field(..., description="Date the contract expires or ends in DD-MM-YYYY format")
+    contract_description: str = Field(..., description="Very short Oneline description of the contract, if not exist create one.")
     objective: Optional[str] = Field(None, description="Stated business objective of the contract")
     scope: Optional[List[str]] = Field(default_factory=list, description="List describing the scope of the agreement")
     pricing_and_payment_terms: Optional[str] = Field(None, description="Terms related to pricing and payment schedule")
@@ -60,9 +60,9 @@ class ExtractedContractMetadata(BaseModel):
     supplier_name: str
     buyer_name: str
     purchase_order: Optional[str]
-    purchase_date: Optional[date]
-    expiry_date: Optional[date]
-    contract_description: Optional[str]
+    purchase_date: date
+    expiry_date: date
+    contract_description: str
     objective: Optional[str]
     scope: Optional[List[str]]
     pricing_and_payment_terms: Optional[str]
@@ -74,9 +74,10 @@ class ExtractedContractMetadata(BaseModel):
 Guidelines:
 
 - Extract all fields if present. If a field is not found, omit it or set it to null.
+- The contract must have a purchase date and an expiry date.
 - Dates must be in ISO format: YYYY-MM-DD.
-- Date might be provided in the text. like Effective date: December 2020, which you should consider as Effective Date: 01-12-2020
-- Expiry date might be provided in the text. like Expiry Date: 5 years from the Effective Date, which you should consider as Expiry Date: 01-12-2025
+- Date might be provided in the text. like Effective date: December 2020, which you should consider as Effective Date: 2020-12-01
+- Expiry date might be provided in the text. like Expiry Date: 5 years from the Effective Date, which you should consider as Expiry Date: 2025-12-01
 - Fields like scope must be a list of bullet points if multiple scopes are defined.
 - For contract_type, infer the type such as "Purchase Contract", "MSA", "SOW", Framework Agreement / PO Contract etc.
 - If no contract_type found in the text, set it to "Contract".
@@ -98,7 +99,7 @@ def extract_metadata(contract_text: str, model: str) -> ExtractedContractMetadat
         ]
     )
     content = response['message']['content']
-    logger.info(f"Metadata extracted as {content}")
+    logger.info(f"Metadata extracted as {str(content)[:100]}...")
     return ExtractedContractMetadata.model_validate_json(content)
 
 def load_json_contract(file_path: Path) -> dict:

@@ -2,12 +2,8 @@ from procureme.clients.embedder import EmbeddingClientABC
 from typing import List
 from openai import OpenAI
 import os
-from enum import StrEnum
+from procureme.configurations.aimodels import EmbeddingModelSelection
 
-class EmbeddingModelSelection(StrEnum):
-    EMBED_SMALL = "text-embedding-3-small"
-    EMBED_LARGE = "text-embedding-3-large"
-    EMBED_ADA = "text-embedding-ada-002"
 
 class OpenAIEmbeddingClient(EmbeddingClientABC):
     """Ollama implementation of the EmbeddingClientABC interface."""

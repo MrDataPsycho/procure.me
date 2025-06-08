@@ -3,14 +3,18 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY src /app/src
-COPY vectordb /app/vectordb
-COPY LICENSE.txt .
-COPY README.md .
+# Copy only dependency files first
 COPY pyproject.toml .
+COPY README.md .
+COPY LICENSE.txt .
+COPY src /app/src
 
+# Upgrade pip and install dependencies
 RUN pip install --upgrade pip
-
 RUN pip install --no-cache-dir .
 
-CMD ["uvicorn", "src.services.contract_app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Now copy the rest of the source code and assets
+COPY vectordb /app/vectordb
+COPY .env .
+
+CMD ["uvicorn", "src.services.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

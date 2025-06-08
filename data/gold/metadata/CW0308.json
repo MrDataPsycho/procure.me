@@ -1,0 +1,22 @@
+{
+  "contract_title": "PROCUREMENT CONTRACT",
+  "contract_type": "Procurement Contract",
+  "supplier_name": "Infosys",
+  "buyer_name": "Plasma Corporation",
+  "purchase_order": null,
+  "purchase_date": "2023-07-01",
+  "expiry_date": "2027-07-01",
+  "contract_description": "The Supplier shall provide the following HP laptops to the Buyer: • HP Laptop Model A • HP Laptop Model B • HP Laptop Model C",
+  "objective": null,
+  "scope": [
+    "HP Laptop Model A",
+    "HP Laptop Model B",
+    "HP Laptop Model C"
+  ],
+  "pricing_and_payment_terms": "The pricing for the HP laptops shall be as follows: • HP Laptop Model A: $800 per unit • HP Laptop Model B: $1000 per unit • HP Laptop Model C: $1200 per unit",
+  "delivery_terms": null,
+  "quality_assurance": null,
+  "confidentiality_clause": true,
+  "termination_clause": "Either party may terminate this Contract with 30 days written notice to the other party. Either party may terminate this Contract immediately in the event of a material breach by the other party.",
+  "cwid": "CW0308"
+}

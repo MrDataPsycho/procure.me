@@ -1,0 +1,22 @@
+{
+  "contract_title": "PROCUREMENT CONTRACT",
+  "contract_type": "Procurement Contract",
+  "supplier_name": "Chirayan Constructions",
+  "buyer_name": "Plasma Corporation",
+  "purchase_order": null,
+  "purchase_date": "2022-10-01",
+  "expiry_date": "2024-10-01",
+  "contract_description": "This Procurement Contract is entered into between Chirayan Constructions and Plasma Corporation.",
+  "objective": "To establish the terms and conditions for the procurement of products/services from Chirayan Constructions by Plasma Corporation.",
+  "scope": [
+    "Product A",
+    "Product B",
+    "Product C"
+  ],
+  "pricing_and_payment_terms": "Product A: $10 per unit; Product B: $20 per unit; Product C: $30 per unit. Payment Terms: The Buyer shall make payments to the Supplier within 30 days from the receipt of a valid invoice. Payment Method: Payments shall be made via bank transfer.",
+  "delivery_terms": "Not explicitly specified in the contract text.",
+  "quality_assurance": "Not explicitly specified in the contract text.",
+  "confidentiality_clause": true,
+  "termination_clause": "Either party may terminate this Contract with 30 days written notice to the other party. Either party may terminate this Contract immediately in the event of a material breach by the other party.",
+  "cwid": "CW0304"
+}

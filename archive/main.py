@@ -6,6 +6,7 @@ from procureme.vectordb.lance_vectordb import LanceDBVectorStore
 from pathlib import Path
 from llama_index.llms.ollama import Ollama
 from procureme.agents.ragagent import RAGChatAgent
+from .routers.schema import ChatRequest, ChatResponse, SourceDocument
 import logging
 import os
 

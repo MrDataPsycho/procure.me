@@ -1,0 +1,22 @@
+{
+  "contract_title": "PROCUREMENT CONTRACT",
+  "contract_type": "Procurement Contract",
+  "supplier_name": "B7",
+  "buyer_name": "Plasma Corporation",
+  "purchase_order": null,
+  "purchase_date": "2023-07-01",
+  "expiry_date": "2026-07-01",
+  "contract_description": "The Supplier shall provide the following products/services to the Buyer: Product X7, Product Y7, Product Z7.",
+  "objective": "The Supplier shall provide the following products/services to the Buyer: Product X7, Product Y7, Product Z7.",
+  "scope": [
+    "Product X7",
+    "Product Y7",
+    "Product Z7"
+  ],
+  "pricing_and_payment_terms": "Product X7: $15 per unit, Product Y7: $25 per unit, Product Z7: $35 per unit. Payment Terms: The Buyer shall make payments to the Supplier within 45 days from the receipt of a valid invoice. Payment Method: Payments shall be made via PayPal, as agreed upon by both parties.",
+  "delivery_terms": "",
+  "quality_assurance": "",
+  "confidentiality_clause": true,
+  "termination_clause": "Termination for Convenience: Either party may terminate this Contract with 60 days written notice to the other party. Termination for Cause: Either party may terminate this Contract immediately in the event of a material breach by the other party.",
+  "cwid": "CW0332"
+}

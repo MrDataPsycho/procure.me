@@ -1,0 +1,22 @@
+{
+  "contract_title": "PROCUREMENT CONTRACT",
+  "contract_type": "Procurement Contract",
+  "supplier_name": "Sreedevi Constructions",
+  "buyer_name": "Plasma Corporation",
+  "purchase_order": null,
+  "purchase_date": "2022-03-01",
+  "expiry_date": "2024-03-01",
+  "contract_description": "This Procurement Contract is entered into between Sreedevi Constructions and Plasma Corporation.",
+  "objective": "To provide products/services to the Buyer with volume discounts and pricing terms.",
+  "scope": [
+    "Product A",
+    "Product B",
+    "Product C"
+  ],
+  "pricing_and_payment_terms": "Product A: $10 per unit; Product B: $20 per unit; Product C: $30 per unit. Payment within 30 days from invoice receipt via bank transfer.",
+  "delivery_terms": "Not specified in the contract.",
+  "quality_assurance": "Not specified in the contract.",
+  "confidentiality_clause": true,
+  "termination_clause": "Either party may terminate with 30 days written notice or immediately for material breach.",
+  "cwid": "CW0305"
+}
