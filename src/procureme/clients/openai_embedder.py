@@ -1,8 +1,8 @@
 from procureme.clients.embedder import EmbeddingClientABC
 from typing import List
 from openai import OpenAI
-import os
 from procureme.configurations.aimodels import EmbeddingModelSelection
+from procureme.configurations.app_configs import Settings
 
 
 class OpenAIEmbeddingClient(EmbeddingClientABC):
@@ -10,7 +10,7 @@ class OpenAIEmbeddingClient(EmbeddingClientABC):
     
     def __init__(
         self,
-        model_name: str = "text-embedding-3-small",
+        model_name: str = EmbeddingModelSelection.EMBED_SMALL,
     ):
         """
         Initialize the Ollama embedding client.
@@ -19,9 +19,10 @@ class OpenAIEmbeddingClient(EmbeddingClientABC):
             model_name: Name of the embedding model to use (default: text-embedding-3-small)
         """
         self.model_name = model_name
-        
+        self.setting = Settings()
+
         # Initialize the underlying client
-        self._client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self._client = OpenAI(api_key=self.setting.OPENAI_API_KEY)
         
         # Calculate dimension with a test query
         self._dimension = self._set_embedding_dimension()
@@ -68,6 +69,7 @@ class OpenAIEmbeddingClient(EmbeddingClientABC):
     def __repr__(self) -> str:
         """Return string representation of the client."""
         return f"OpenAIEmbeddingClient(model_name={self.model_name}, dimension={self.dimension})"
+
     
 
 if __name__ == "__main__":

@@ -15,6 +15,12 @@ class ChatMessage(SQLModel):
     content: str
     timestamp: str
 
+    def to_llm_format(self) -> dict[str, str]:
+        return {
+            "role": self.role.value,
+            "content": self.content
+        }
+
 class ChatSession(SQLModel, table=True):
     __tablename__ = "chat_sessions"
     id: UUID = Field(default_factory=uuid4, primary_key=True)

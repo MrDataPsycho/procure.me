@@ -3,6 +3,7 @@ from enum import StrEnum
 from procureme.configurations.app_configs import Settings
 from procureme.dbmodels.doc_summery import ContractSummary
 from procureme.dbmodels.doc_metadata import ContractMetadata
+from procureme.vectordb.utils import get_vector_store
 from sqlmodel import Session, create_engine, select
 import json
 import pandas as pd
@@ -143,7 +144,6 @@ def summery_retriver_tool(cwid: str, summary_type: SummaryType = SummaryType.SHO
             summary = result.summary_long
         else:
             raise ValueError("Invalid summary type. Use 'short', 'medium', or 'long'.")
-
         if not summary:
             raise ValueError(f"{summary_type.capitalize()} summary is not available for CWID: {cwid}")
         
@@ -192,7 +192,7 @@ def compare_contract_tool(cwid: list[str]) -> str:
         return markdown_table
     
 
-tools = {
+__tools = {
     "retriver_tool": {
         "description": vectordb_retriver_tool_description,
         "function": vector_db_retriver_tool
@@ -220,12 +220,12 @@ tools = {
 def handle_tool_calls(llm_tool_calls: list[dict[str, any]]):
     logger.info("=== Selecting Tools ===")
     output = []
-    available_tools = [tool["description"]["function"]["name"] for tool in tools.values()]
+    available_tools = [tool["description"]["function"]["name"] for tool in __tools.values()]
     if llm_tool_calls:
         tool_list = [tool_call.function.name for tool_call in llm_tool_calls]
         logger.info(f"Follwing tools are selected for execution: {tool_list} from available tools: {available_tools}")
         for tool_call in llm_tool_calls:
-            function_to_call = tools[tool_call.function.name]["function"]
+            function_to_call = __tools[tool_call.function.name]["function"]
             function_args = json.loads(tool_call.function.arguments)
             res = function_to_call(**function_args)
             output.append(res)
@@ -234,5 +234,9 @@ def handle_tool_calls(llm_tool_calls: list[dict[str, any]]):
 
 
 def get_tool_descriptions() -> list[str]:
-    description = [tool["description"] for tool in tools.values()]
+    description = [tool["description"] for tool in __tools.values()]
     return description
+
+
+if __name__ == "__main__":
+    print(get_tool_descriptions())

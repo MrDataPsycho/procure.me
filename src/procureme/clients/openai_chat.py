@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class OpenAIClient:
-    def __init__(self, api_key, model=ChatModelSelection.GPT3):
+    def __init__(self, api_key: str, model=ChatModelSelection.GPT3):
         self.api_key = api_key
         self.model= model
         self.openai = OpenAI(api_key=api_key)

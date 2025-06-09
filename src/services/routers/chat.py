@@ -8,12 +8,20 @@ import os
 from procureme.dbmodels.session import ChatSession, ChatMessage, ChatRole
 from .schema import ChatRequest, ChatResponse, SourceDocument, EnvInfo, ChatSessionSummary
 from procureme.configurations.app_configs import get_session, DEFAULT_ENV_FILE
+from procureme.agents.orchrastrator import OrchrastratorAgent
+from procureme.clients.openai_chat import OpenAIClient
+from procureme.configurations.aimodels import ChatModelSelection
+from procureme.configurations.app_configs import Settings
+
 import logging
 
+
 logger = logging.getLogger(__name__)
-
-
 router = APIRouter(prefix="/sessions", tags=["Chat Sessions"])
+setting = Settings()
+client = OpenAIClient(setting.OPENAI_API_KEY, ChatModelSelection.GPT4_1_NANO)
+orchrastrator_agent = OrchrastratorAgent(client)
+
 
 @router.get("/runtime-env")
 def get_runtime_environment():
@@ -99,22 +107,25 @@ def chat_endpoint(payload: ChatRequest, db: Session = Depends(get_session)):
     query = payload.query
 
     chat = db.get(ChatSession, session_id)
+
     if not chat:
         raise HTTPException(status_code=404, detail="Session not found")
+    
+    msg_history = [ChatMessage.model_validate(msg) for msg in chat.messages]
+    msg_history_llm = [msg.to_llm_format() for msg in msg_history]
 
     # Add user's message
     user_msg = ChatMessage(
         role=ChatRole.USER, 
         content=query, 
         timestamp=datetime.now(tz=timezone.utc).isoformat()
-        )
+    )
+    
     chat.messages.append(user_msg.model_dump())
 
     # Simulate assistant response (replace this with your LLM logic)
-    answer = "Hi, good day! I received your question: " + query
-    sources = [
-        SourceDocument(document_title="Dummy Source", section_text="Dummy Section")
-    ]
+    answer = orchrastrator_agent(query, msg_history_llm)
+    
     assistant_msg = ChatMessage(
         role=ChatRole.ASSISTANT, 
         content=answer, 
@@ -131,7 +142,7 @@ def chat_endpoint(payload: ChatRequest, db: Session = Depends(get_session)):
     return ChatResponse(
         response=answer,
         success=True,
-        sources=sources
+        # sources=sources
     )
 
 

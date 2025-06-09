@@ -6,7 +6,7 @@ import json
 logger = logging.getLogger(__name__)
 
 
-__query_update_prompt = """
+SYSTEM_PROMPT = """
 You are an expert at updating questions to make them ask for one thing only, more atomic, specific and easier to find the answer for.
 You do this by filling in missing information in the question, with the extra information provided to you in previous answers. 
 
@@ -23,7 +23,7 @@ JSON template to use:
 class QueryRewriterAgent:
     def __init__(self, client: OpenAIClient, system_prompt: str | None = None):
         self.client = client
-        self.system_prompt = system_prompt if system_prompt else __query_update_prompt
+        self.system_prompt = system_prompt if system_prompt else SYSTEM_PROMPT
 
     def execute(self, input: str, answers: list[dict[str, str]]) -> str:
         logger.info("=== Entering Query Update Node ===")
@@ -48,3 +48,6 @@ class QueryRewriterAgent:
         except json.JSONDecodeError:
             print("Error decoding JSON")
         return []
+    
+    def __call__(self, input: str, answers: list[dict[str, str]] = None) -> str:
+        return self.execute(input, answers)

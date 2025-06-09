@@ -5,7 +5,7 @@ import json
 
 logger = logging.getLogger(__name__)
 
-answer_critique_prompt = """
+SYSTEM_PROMPT = """
     You are an expert at identifying if questions has been fully answered or if there is an opportunity to enrich the answer.
     The user will provide a question, and you will scan through the provided information to see if the question is answered.
     If anything is missing from the answer, you will provide a set of new questions that can be asked to gather the missing information.
@@ -32,14 +32,14 @@ answer_critique_prompt = """
 class AnswerCritiqueAgent:
     def __init__(self, client: OpenAIClient, system_prompt: str | None = None):
         self.client = client
-        self.system_prompt = system_prompt if system_prompt else answer_critique_prompt
+        self.system_prompt = system_prompt if system_prompt else SYSTEM_PROMPT
 
 
-    def critique_answers(self, question: str, answers: list[dict[str, str]]) -> list[str]:
+    def execute(self, question: str, answers: list[dict[str, str]]) -> list[str]:
         messages = [
             {
                 "role": "system",
-                "content": answer_critique_prompt,
+                "content": self.system_prompt,
             },
             *answers,
             {
@@ -55,3 +55,6 @@ class AnswerCritiqueAgent:
         except json.JSONDecodeError:
             print("Error decoding JSON")
         return []
+    
+    def __call__(self, input: str, answers: list[dict[str, str]] = None) -> list[str]:
+        return self.execute(input, answers)

@@ -14,7 +14,7 @@ class SourceDocument(BaseModel):
 class ChatResponse(BaseModel):
     response: str
     success: bool = False
-    sources: Optional[List[SourceDocument]] = []
+    # sources: Optional[List[SourceDocument]] = []
 
 
 class EnvInfo(BaseModel):
