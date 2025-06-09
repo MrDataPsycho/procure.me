@@ -27,12 +27,7 @@ classifiers = [
 dependencies = [
   "sqlmodel==0.0.21",
   "psycopg2-binary==2.9.10",
-  "llama-index-llms-ollama==0.5.4",
-  "llama-index-embeddings-ollama==0.6.0",
-  "neopipe==0.1.1",
-  "ollama==0.4.8",
-  "pymupdf4llm==0.0.24",
-  "llama-index==0.12.36",
+  "pandas",
   "lancedb==0.22.0",
   "fastapi==0.115.12",
   "uvicorn==0.34.2",
@@ -41,7 +36,7 @@ dependencies = [
   "requests",
   "watchdog==6.0.0",
   "openai==1.82.1",
-  "doctomarkdown==0.1.7",
+  "pydantic-settings"
 ]
 
 [project.optional-dependencies]
@@ -51,18 +46,30 @@ testing = [
     "pytest-mock"
 ]
 
+etl = [
+  "pymupdf4llm==0.0.24",
+  "doctomarkdown==0.1.7",
+  "neopipe==0.1.1",
+  "ollama==0.4.8",
+  "llama-index==0.12.36",
+  "llama-index-llms-ollama==0.5.4",
+  "llama-index-embeddings-ollama==0.6.0",
+]
+
 dev = [
   "ruff",
   "mypy",
   "typer",
   "python-dotenv",
-  "pandas",
   "polars",
   "nbconvert",
   "requests",
   "ipywidgets",
   "typer",
   "tqdm",
+  "aiofiles",
+  "tenacity",
+  "httpx"
 ]
 
 [project.urls]

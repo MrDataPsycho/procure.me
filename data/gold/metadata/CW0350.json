@@ -1,0 +1,22 @@
+{
+  "contract_title": "PROCUREMENT CONTRACT",
+  "contract_type": "Procurement Contract",
+  "supplier_name": "SRINIVASA",
+  "buyer_name": "Plasma Corporation",
+  "purchase_order": null,
+  "purchase_date": "2020-12-01",
+  "expiry_date": "2023-12-01",
+  "contract_description": "This Procurement Contract (the \"Contract\") is entered into between SRINIVASA, hereinafter referred to as the \"Supplier,\" and Plasma Corporation, hereinafter referred to as the \"Buyer.\"",
+  "objective": "The Supplier shall provide the following products/services to the Buyer: Car, Bus, Bike",
+  "scope": [
+    "The Supplier shall provide the following products/services to the Buyer: Car, Bus, Bike",
+    "The Buyer and the Supplier agree to the following volume discounts based on the cumulative purchase volume during the Contract term: 100 units - 500 units: 5.5% discount, 501 units - 1000 units: 5% discount, Over 1000 units: 15% discount",
+    "The pricing for the products/services shall be as follows: Car: $15 per unit, Bus:$25 per unit, Bike: $35 per unit"
+  ],
+  "pricing_and_payment_terms": "The pricing for the products/services shall be as follows: Car: $15 per unit, Bus:$25 per unit, Bike: $35 per unit. The Buyer shall make payments to the Supplier within 45 days from the receipt of a valid invoice. Payments shall be made via PayPal, as agreed upon by both parties.",
+  "delivery_terms": "The Supplier shall submit invoices to the Buyer for the products/services provided as per the agreed-upon pricing and terms.",
+  "quality_assurance": "",
+  "confidentiality_clause": true,
+  "termination_clause": "Either party may terminate this Contract with 60 days written notice to the other party. Either party may terminate this Contract immediately in the event of a material breach by the other party.",
+  "cwid": "CW0350"
+}

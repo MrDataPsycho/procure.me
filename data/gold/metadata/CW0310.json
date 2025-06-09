@@ -1,0 +1,18 @@
+{
+  "contract_title": "PROCUREMENT CONTRACT",
+  "contract_type": "Procurement Contract",
+  "supplier_name": "ACME Technologies",
+  "buyer_name": "XYZ Company",
+  "purchase_order": null,
+  "purchase_date": "2023-11-01",
+  "expiry_date": "2025-11-01",
+  "contract_description": "The Supplier shall provide Azure Open AI services to the Buyer as per the agreed-upon scope of work and specifications.",
+  "objective": null,
+  "scope": null,
+  "pricing_and_payment_terms": "The pricing for the Azure Open AI services shall be as follows: Service Component A: $1000 per month, Service Component B: $1500 per month, Service Component C: $2000 per month. The Buyer shall make payments to the Supplier within 30 days from the receipt of a valid invoice. Payments shall be made via bank transfer, as agreed upon by both parties.",
+  "delivery_terms": null,
+  "quality_assurance": "The Supplier shall adhere to the SLA outlined in Exhibit A, which specifies the performance metrics, availability, and support levels for the Azure Open AI services.",
+  "confidentiality_clause": true,
+  "termination_clause": "Either party may terminate this Contract with 30 days written notice to the other party. Either party may terminate this Contract immediately in the event of a material breach by the other party.",
+  "cwid": "CW0310"
+}
