@@ -36,7 +36,9 @@ dependencies = [
   "requests",
   "watchdog==6.0.0",
   "openai==1.82.1",
-  "pydantic-settings"
+  "pydantic-settings",
+  "llama-index-embeddings-ollama==0.6.0",
+  "tabulate",
 ]
 
 [project.optional-dependencies]

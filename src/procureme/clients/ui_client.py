@@ -19,7 +19,7 @@ class ChatSessionClient:
             base_url (str): The base URL of the chat session API.
         """
         self.base_url = base_url.rstrip("/")
-        self.client = httpx.Client(base_url=self.base_url)
+        self.client = httpx.Client(base_url=self.base_url, timeout=60.0)
 
     def create_session(self, label: str) -> Optional[Dict[str, Any]]:
         """

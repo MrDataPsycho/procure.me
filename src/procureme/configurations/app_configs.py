@@ -43,7 +43,7 @@ class Settings(BaseSettings):
 
 def get_session():
     settings = Settings()
-    engine = create_engine(settings.pg_database_url, echo=True)
+    engine = create_engine(settings.pg_database_url)
     with Session(engine) as session:
         yield session
 

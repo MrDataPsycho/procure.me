@@ -103,7 +103,7 @@ def vector_db_retriver_tool(question: str):
 sumery_retriver_tool_description = {
     "type": "function",
     "function": {
-        "name": "sumery_retriver_tool",
+        "name": "summery_retriver_tool",
         "description": "Query the database with a user provide cwid and summary type to pull the most relevant summary. The tool is only when only user ask to get summary of a contract.",
         "parameters": {
             "type": "object",
