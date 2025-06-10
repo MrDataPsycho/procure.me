@@ -6,7 +6,8 @@ from datetime import datetime, timezone
 import os
 
 from procureme.dbmodels.session import ChatSession, ChatMessage, ChatRole
-from .schema import ChatRequest, ChatResponse, SourceDocument, EnvInfo, ChatSessionSummary
+from .schema import ChatRequest, ChatResponse, EnvInfo, ChatSessionSummary, RetrievedDocument, QueryRequest
+from procureme.vectordb.utils import get_vector_store
 from procureme.configurations.app_configs import get_session, DEFAULT_ENV_FILE
 from procureme.agents.orchrastrator import OrchrastratorAgent
 from procureme.clients.openai_chat import OpenAIClient
@@ -19,7 +20,7 @@ import logging
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/sessions", tags=["Chat Sessions"])
 setting = Settings()
-client = OpenAIClient(setting.OPENAI_API_KEY, ChatModelSelection.GPT4_1_NANO)
+client = OpenAIClient(setting.OPENAI_API_KEY, ChatModelSelection.GPT4_1_MINI)
 orchrastrator_agent = OrchrastratorAgent(client)
 
 
@@ -144,6 +145,25 @@ def chat_endpoint(payload: ChatRequest, db: Session = Depends(get_session)):
         success=True,
         # sources=sources
     )
+
+
+@router.post("/search", response_model=List[RetrievedDocument])
+def search_vector_db(request: QueryRequest) -> list:
+    try:
+        vector_store = get_vector_store()
+        documents = vector_store.search(query=request.question, top_k=5)
+
+        # Optional: rename _distance to distance to avoid underscore issues
+        formatted = []
+        for doc in documents:
+            if '_distance' in doc:
+                doc['distance'] = doc.pop('_distance')  # rename for schema match
+            formatted.append(doc)
+
+        return formatted
+    except Exception as e:
+        logger.error(f"Retrieval error: {e}")
+        raise HTTPException(status_code=500, detail=f"Could not query vector store: {e}")
 
 
 # --------- DELETE Session ---------

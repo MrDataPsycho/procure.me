@@ -29,3 +29,17 @@ class ChatSessionSummary(BaseModel):
     label: str
     created_at: datetime
     updated_at: datetime
+
+
+class RetrievedDocument(BaseModel):
+    chunk_id: str
+    doc_id: str
+    file_name: str
+    total_pages: int
+    content: str
+    part: Optional[str] = None
+    distance: float
+
+
+class QueryRequest(BaseModel):
+    question: str

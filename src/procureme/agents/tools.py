@@ -87,13 +87,18 @@ vectordb_retriver_tool_description = {
 }
 
 
-def vector_db_retriver_tool(question: str):
+def vector_db_retriver_tool(question: str) -> str:
     """Query the database with a user question."""
     logger.info("=== Entering Retrival Tool ===")
     try:
         vector_store = get_vector_store()
         documents = vector_store.search(query=question, top_k=5)
-        context = "\n\n".join([doc["content"] for doc in documents])
+        document_ids = [f"{doc['doc_id']}-{doc['part']}" for doc in documents]
+
+        logger.info(f"Following document parts is retrieved: {document_ids}")
+        context = "\n\n".join(
+            [f"--- [CONTEXT_DOCUMENT_NAME]: {doc['doc_id']} [CONTEXT_DOCUMENT_NAME_PARTITION_NUMBER]: {doc['part']} ---\n[CONTENT]:\n{doc['content']}\n\n" for doc in documents]
+        )
         logger.info("Retrival Tool executed successfully.")
         return context
     except Exception as e:

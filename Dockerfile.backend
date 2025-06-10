@@ -11,7 +11,7 @@ COPY src /app/src
 
 # Upgrade pip and install dependencies
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir .
+RUN pip install  .
 
 # Now copy the rest of the source code and assets
 COPY vectordb /app/vectordb
