@@ -111,8 +111,8 @@ def chat_endpoint(payload: ChatRequest, db: Session = Depends(get_session)):
     if not chat:
         raise HTTPException(status_code=404, detail="Session not found")
     
-    msg_history = [ChatMessage.model_validate(msg) for msg in chat.messages]
-    msg_history_llm = [msg.to_llm_format() for msg in msg_history]
+    # msg_history = [ChatMessage.model_validate(msg) for msg in chat.messages]
+    # msg_history_llm = [msg.to_llm_format() for msg in msg_history]
 
     # Add user's message
     user_msg = ChatMessage(
@@ -124,7 +124,7 @@ def chat_endpoint(payload: ChatRequest, db: Session = Depends(get_session)):
     chat.messages.append(user_msg.model_dump())
 
     # Simulate assistant response (replace this with your LLM logic)
-    answer = orchrastrator_agent(query, msg_history_llm)
+    answer = orchrastrator_agent(query)
     
     assistant_msg = ChatMessage(
         role=ChatRole.ASSISTANT, 

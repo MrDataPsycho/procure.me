@@ -192,15 +192,15 @@ def compare_contract_tool(cwid: list[str]) -> str:
         return markdown_table
     
 
-__tools = {
+_tools = {
     "retriver_tool": {
         "description": vectordb_retriver_tool_description,
         "function": vector_db_retriver_tool
     },
-    "answer_given": {
-        "description": answer_given_description,
-        "function": answer_given
-    },
+    # "answer_given": {
+    #     "description": answer_given_description,
+    #     "function": answer_given
+    # },
     "summery_retriver_tool": {
         "description": sumery_retriver_tool_description,
         "function": summery_retriver_tool
@@ -209,10 +209,10 @@ __tools = {
         "description": compare_contract_tool_description,
         "function": compare_contract_tool
     },
-    "respond_unrelated_question": {
-        "description": respond_unrelated_question_description,
-        "function": respond_unrelated_question_tool
-    }
+    # "respond_unrelated_question": {
+    #     "description": respond_unrelated_question_description,
+    #     "function": respond_unrelated_question_tool
+    # }
 }
 
 
@@ -220,12 +220,12 @@ __tools = {
 def handle_tool_calls(llm_tool_calls: list[dict[str, any]]):
     logger.info("=== Selecting Tools ===")
     output = []
-    available_tools = [tool["description"]["function"]["name"] for tool in __tools.values()]
+    available_tools = [tool["description"]["function"]["name"] for tool in _tools.values()]
     if llm_tool_calls:
         tool_list = [tool_call.function.name for tool_call in llm_tool_calls]
         logger.info(f"Follwing tools are selected for execution: {tool_list} from available tools: {available_tools}")
         for tool_call in llm_tool_calls:
-            function_to_call = __tools[tool_call.function.name]["function"]
+            function_to_call = _tools[tool_call.function.name]["function"]
             function_args = json.loads(tool_call.function.arguments)
             res = function_to_call(**function_args)
             output.append(res)
@@ -234,7 +234,7 @@ def handle_tool_calls(llm_tool_calls: list[dict[str, any]]):
 
 
 def get_tool_descriptions() -> list[str]:
-    description = [tool["description"] for tool in __tools.values()]
+    description = [tool["description"] for tool in _tools.values()]
     return description
 
 
