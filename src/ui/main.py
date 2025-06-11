@@ -77,9 +77,9 @@ if st.session_state.active_session_id:
         st.info("Try asking one of the featured questions:")
         col1, col2, col3 = st.columns(3)
         featured_questions = [
-            "What is the contract value?",
-            "When does this contract expire?",
-            "Summarize key terms of this agreement"
+            "What do you know about Supplier: Alpha Suppliers Inc. and what it supplies?",
+            "what is the difference between the contract CW0307 and CW0343",
+            "Provide me a long summery of the contract number CW0307"
         ]
         for i, col in enumerate((col1, col2, col3)):
             if col.button(featured_questions[i]):
