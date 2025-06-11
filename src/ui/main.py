@@ -1,8 +1,11 @@
 import streamlit as st
 import os
+from PIL import Image
+from pathlib import Path
 
 from procureme.clients.ui_client import ChatSessionClient
 from procureme.__about__ import __version__
+
 
 
 
@@ -12,10 +15,14 @@ SESSION_ENDPOINT = os.path.join(BASE_URL, "sessions")
 
 client = ChatSessionClient(base_url=SESSION_ENDPOINT)
 
-st.set_page_config(page_title="Procure[.]Me", layout="wide")
-st.title("📄💬 Procure[.]me Contract Assistant")
+logo_path = Path("static").joinpath("logo.png")
+logo = Image.open(logo_path)
 
-# Add Footer with version Number
+st.set_page_config(page_title="Procure[.]Me", layout="wide")
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    st.image(logo, use_container_width=True)
+st.markdown("<h5 style='text-align: center;'>AI-Powered Contracting & Procurement Intelligence</h5>", unsafe_allow_html=True)
 
 
 # --- Init State ---
@@ -125,3 +132,4 @@ st.sidebar.markdown(
     """,
     unsafe_allow_html=True
 )
+st.sidebar.image(logo, width=100, use_container_width=True)

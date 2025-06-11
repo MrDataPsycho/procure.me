@@ -3,16 +3,15 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY src /app/src
-COPY vectordb /app/vectordb
 COPY LICENSE.txt .
 COPY README.md .
 COPY pyproject.toml .
+COPY src /app/src
+COPY static /app/static
 
 RUN pip install --upgrade pip
 
-# RUN pip install --no-cache-dir .
-RUN pip install .
+RUN pip install --no-cache-dir .
 
 
 EXPOSE 8501
