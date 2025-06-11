@@ -65,7 +65,7 @@ if st.session_state.active_session_id:
     with st.sidebar.expander("🛠 Session Options"):
         new_name = st.text_input("Rename Session", value=session_data["label"], key="rename_input")
         if st.button("✏️ Rename"):
-            updated = client.rename_session(session_id=active_id, new_label=new_name)
+            updated = client.update_session_label(session_id=active_id, label=new_name)
             for sess in st.session_state.session_list:
                 if sess["id"] == active_id:
                     sess["label"] = updated["label"]
