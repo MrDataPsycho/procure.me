@@ -8,7 +8,7 @@ import os
 logger = getLogger(__name__)
 
 def get_vector_store():
-    table_name = os.getenv("VECTOR_TABLE", "contracts_naive")
+    table_name = os.getenv("VECTOR_INDEX", "contracts_naive")
     vector_db_path = Path("vectordb").joinpath("contracts.db")
     if table_name == "contracts_naive":
         emb_client = OllamaEmbeddingClient()

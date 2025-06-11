@@ -69,18 +69,41 @@ if st.session_state.active_session_id:
 if st.session_state.active_session_id:
     session_data = client.get_session(session_id=st.session_state.active_session_id)
     st.subheader(f"💬 Chat: **{session_data['label']}** (`{session_data['id']}`)")
-    
-    for msg in session_data["messages"]:
+
+    messages = session_data["messages"]
+
+    # Featured questions if no chat yet
+    if not messages:
+        st.info("Try asking one of the featured questions:")
+        col1, col2, col3 = st.columns(3)
+        featured_questions = [
+            "What is the contract value?",
+            "When does this contract expire?",
+            "Summarize key terms of this agreement"
+        ]
+        for i, col in enumerate((col1, col2, col3)):
+            if col.button(featured_questions[i]):
+                st.session_state.featured_input = featured_questions[i]
+                st.rerun()
+
+    # Display past messages
+    for msg in messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
+    # Get user input (manual or from featured button)
     user_input = st.chat_input("Ask me a question...")
+    if "featured_input" in st.session_state:
+        user_input = st.session_state.pop("featured_input")
 
+    # Process user input
     if user_input:
         with st.chat_message("user"):
             st.markdown(user_input)
 
-        response = client.send_chat(session_id=session_data["id"], query=user_input)
+        with st.spinner("Thinking..."):
+            response = client.send_chat(session_id=session_data["id"], query=user_input)
+
         with st.chat_message("assistant"):
             st.markdown(response["response"])
         st.rerun()

@@ -11,7 +11,8 @@ COPY pyproject.toml .
 
 RUN pip install --upgrade pip
 
-RUN pip install --no-cache-dir .
+# RUN pip install --no-cache-dir .
+RUN pip install .
 
 
 EXPOSE 8501
