@@ -2,6 +2,9 @@ import streamlit as st
 import os
 
 from procureme.clients.ui_client import ChatSessionClient
+from procureme.__about__ import __version__
+
+
 
 # Init API client
 BASE_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
@@ -11,6 +14,9 @@ client = ChatSessionClient(base_url=SESSION_ENDPOINT)
 
 st.set_page_config(page_title="Procure[.]Me", layout="wide")
 st.title("📄💬 Procure[.]me Contract Assistant")
+
+# Add Footer with version Number
+
 
 # --- Init State ---
 if "session_list" not in st.session_state:
@@ -109,3 +115,13 @@ if st.session_state.active_session_id:
         st.rerun()
 else:
     st.info("No active session. Please create a new session to begin chatting.")
+
+st.sidebar.markdown(
+    f"""
+    <hr style="margin-top: 50px;">
+    <div style="text-align: center; font-size: 12px; color: grey;">
+        Procure[.]Me • Version {__version__}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
